@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form filter</title>
+
+        <style>
+            .elementor-form {
+                display: inline-block;
+                margin: 35vh 10vw 0;
+                padding: 10px;
+            }
+
+            .elementor-form:nth-child(1) {
+                border: 3px solid red;
+            }
+
+            .elementor-form:nth-child(2) {
+                border: 3px solid black;
+            }
+
+            .elementor-form:nth-child(3) {
+                border: 3px solid green;
+            }
+
+            .elementor-form div {
+                margin: 2vh 0;
+            }
+        </style>
+    </head>
+    <body>
+        <form class="elementor-form">
+            <div><input type="text" id="form-field-name" placeholder="Имя" required></div>
+            <div><input type="text" id="form-field-field_2" placeholder="Город доставки" required></div>
+            <div><textarea id="form-field-field_3" rows="3" placeholder="Комментарий" required></textarea></div>
+            <div><button type="submit">Оставить заявку</button></div>
+        </form>
+
+        <form class="elementor-form">
+            <div><textarea id="form-field-message" rows="3" placeholder="Сообщение" required></textarea></div>
+            <div><button type="submit">Отправить</button></div>
+        </form>
+
+        <form class="elementor-form">
+            <div><input type="text" id="form-field-name" placeholder="Имя" required></div>
+            <div><button type="submit">Оставить заявку</button></div>
+        </form>
+
+        <script>
+            let name = document.querySelector("#form-field-name");
+            let city = document.querySelector("#form-field-field_2");
+            let comment = document.querySelector("#form-field-field_3");
+            let message = document.querySelector("#form-field-message");
+            let matmassive = ["хуй", "хуй.", "хуй,", "хуй!", "хуй?", "Хуй", "Хуй.", "Хуй,", "Хуй!", "Хуй?", "пизда", "пизда.", "пизда,", "пизда!", "пизда?", "Пизда", "Пизда.", "Пизда,", "Пизда!", "Пизда?", "долбоеб", "долбоеб.", "долбоеб,", "долбоеб!", "долбоеб?", "Долбоеб", "Долбоеб.", "Долбоеб,", "Долбоеб!", "Долбоеб?", "долбоёб", "долбоёб.", "долбоёб,", "долбоёб!", "долбоёб?", "Долбоёб", "Долбоёб.", "Долбоёб,", "Долбоёб!", "Долбоёб?", "пидорас", "пидорас.", "пидорас,", "пидорас!", "пидорас?", "Пидорас", "Пидорас.", "Пидорас,", "Пидорас!", "Пидорас?", "пидр", "пидр.", "пидр,", "пидр!", "пидр?", "Пидр", "Пидр.", "Пидр,", "Пидр!", "Пидр?", "хуесос", "хуесос.", "хуесос,", "хуесос!", "хуесос?", "Хуесос", "Хуесос.", "Хуесос,", "Хуесос!", "Хуесос?", "еблан", "еблан.", "еблан,", "еблан!", "еблан?", "Еблан", "Еблан.", "Еблан,", "Еблан!", "Еблан?", "пиздец", "пиздец.", "пиздец,", "пиздец!", "пиздец?", "Пиздец", "Пиздец.", "Пиздец,", "Пиздец!", "Пиздец?", "ебал", "ебал.", "ебал,", "ебал!", "ебал?", "Ебал", "Ебал.", "Ебал,", "Ебал!", "Ебал?"];
+
+            name.setAttribute("onchange", "filter(\"name\")");
+            city.setAttribute("onchange", "filter(\"city\")");
+            comment.setAttribute("onchange", "filter(\"comment\")");
+            message.setAttribute("onchange", "filter(\"message\")");
+
+            function filter(string) {
+                switch(string) {
+                    case "name":
+                        let namemass = name.value.split(' ');
+                        for (let i = 0; i < matmassive.length; i++) {
+                            for (let j = 0; j < namemass.length; j++) {
+                                if (namemass[j] == matmassive[i]) {
+                                    mattrigger("name");
+                                }
+                            }
+                        }
+                        break;
+                    case "city":
+                        let citymass = city.value.split(' ');
+                        for (let i = 0; i < matmassive.length; i++) {
+                            for (let j = 0; j < citymass.length; j++) {
+                                if (citymass[j] == matmassive[i]) {
+                                    mattrigger("city");
+                                }
+                            }
+                        }
+                        break;
+                    case "comment":
+                        let commentmass = comment.value.split(' ');
+                        for (let i = 0; i < matmassive.length; i++) {
+                            for (let j = 0; j < commentmass.length; j++) {
+                                if (commentmass[j] == matmassive[i]) {
+                                    mattrigger("comment");
+                                }
+                            }
+                        }
+                        break;
+                    case "message":
+                        let messagemass = message.value.split(' ');
+                        for (let i = 0; i < matmassive.length; i++) {
+                            for (let j = 0; j < messagemass.length; j++) {
+                                if (messagemass[j] == matmassive[i]) {
+                                    mattrigger("message");
+                                }
+                            }
+                        }
+                        break; 
+                }
+            }
+
+            function mattrigger(string) {
+                switch(string) {
+                    case "name":
+                        alert("Не материтесь, пожалуйста!");
+                        name.value = "";
+                        break;
+                    case "city":
+                        alert("Не материтесь, пожалуйста!");
+                        city.value = "";
+                        break;
+                    case "comment":
+                        alert("Не материтесь, пожалуйста!");
+                        comment.value = "";
+                        break;
+                    case "message":
+                        alert("Не материтесь, пожалуйста!");
+                        message.value = "";
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>
